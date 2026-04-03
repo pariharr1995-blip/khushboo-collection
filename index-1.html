@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Khushboo Collection – Stylish Mens Wear Abu Road</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --gold: #c9993f;
+      --gold-light: #e8c070;
+      --cream: #fdf6ec;
+      --dark-card: #111d33;
+      --text-light: #c8d3e8;
+      --wa-green: #25D366;
+      --wa-dark: #1da851;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',sans-serif; background:var(--navy); color:#fff; overflow-x:hidden; }
+
+    /* NAV */
+    nav {
+      position:fixed; top:0; width:100%; z-index:200;
+      padding:15px 40px;
+      display:flex; align-items:center; justify-content:space-between;
+      background:rgba(10,22,40,0.95); backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(201,153,63,0.2);
+    }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--gold); }
+    .nav-logo span { color:#fff; }
+    .nav-links { display:flex; gap:28px; list-style:none; }
+    .nav-links a { color:var(--text-light); text-decoration:none; font-size:0.88rem; font-weight:500; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--gold); }
+    .nav-wa {
+      background:var(--wa-green); color:#fff;
+      padding:9px 20px; border-radius:50px;
+      font-weight:700; font-size:0.85rem;
+      text-decoration:none; display:flex; align-items:center; gap:7px;
+      transition:background 0.2s;
+    }
+    .nav-wa:hover { background:var(--wa-dark); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { width:24px; height:2px; background:var(--gold); border-radius:2px; }
+
+    /* HERO */
+    #home {
+      min-height:100vh; display:flex; align-items:center;
+      padding:120px 40px 80px; position:relative; overflow:hidden;
+    }
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
+      background:
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(37,211,102,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 70% at 15% 40%, rgba(201,153,63,0.09) 0%, transparent 60%),
+        linear-gradient(135deg, #0a1628 0%, #0f2040 60%, #0a1628 100%);
+    }
+    .hero-pattern {
+      position:absolute; inset:0; z-index:0; opacity:0.03;
+      background-image:repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+      background-size:30px 30px;
+    }
+    .hero-content { position:relative; z-index:1; max-width:700px; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(201,153,63,0.12); border:1px solid rgba(201,153,63,0.3);
+      color:var(--gold); padding:6px 16px; border-radius:50px;
+      font-size:0.78rem; font-weight:600; letter-spacing:1px;
+      text-transform:uppercase; margin-bottom:26px;
+      animation:fadeUp 0.7s ease both;
+    }
+    .hero-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2.6rem,6vw,4.8rem); font-weight:900; line-height:1.1;
+      margin-bottom:18px; animation:fadeUp 0.7s 0.1s ease both;
+    }
+    .hero-title .gold { color:var(--gold); }
+    .hero-sub {
+      font-size:1.1rem; color:var(--text-light); font-weight:300;
+      line-height:1.7; margin-bottom:20px;
+      animation:fadeUp 0.7s 0.2s ease both;
+    }
+
+    /* BIG WA CTA BOX */
+    .wa-cta-box {
+      background:linear-gradient(135deg, rgba(37,211,102,0.12), rgba(37,211,102,0.04));
+      border:1.5px solid rgba(37,211,102,0.35);
+      border-radius:20px; padding:28px 30px;
+      margin:32px 0; animation:fadeUp 0.7s 0.3s ease both;
+    }
+    .wa-cta-box h3 { font-family:'Playfair Display',serif; font-size:1.4rem; color:#fff; margin-bottom:8px; }
+    .wa-cta-box p { color:var(--text-light); font-size:0.92rem; line-height:1.6; margin-bottom:20px; }
+    .wa-big-btn {
+      display:inline-flex; align-items:center; gap:12px;
+      background:var(--wa-green); color:#fff;
+      padding:16px 34px; border-radius:50px;
+      font-weight:700; font-size:1.05rem; text-decoration:none;
+      box-shadow:0 8px 30px rgba(37,211,102,0.35);
+      transition:all 0.2s;
+    }
+    .wa-big-btn:hover { background:var(--wa-dark); transform:translateY(-3px); }
+    .wa-big-btn .wa-icon { font-size:1.4rem; }
+    .wa-steps { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+    .wa-step {
+      display:flex; align-items:center; gap:8px;
+      background:rgba(255,255,255,0.06); border-radius:50px;
+      padding:7px 16px; font-size:0.82rem; color:var(--cream);
+    }
+    .wa-step .num {
+      background:var(--wa-green); color:#fff;
+      width:20px; height:20px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-size:0.7rem; font-weight:700; flex-shrink:0;
+    }
+
+    /* SECTION BASE */
+    .section-label { text-align:center; font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:12px; }
+    .section-title { text-align:center; font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; margin-bottom:14px; }
+    .section-sub { text-align:center; color:var(--text-light); font-size:0.95rem; max-width:500px; margin:0 auto 50px; line-height:1.7; }
+    .gold-line { width:55px; height:3px; background:linear-gradient(90deg,var(--gold),var(--gold-light)); margin:0 auto 18px; border-radius:2px; }
+
+    /* HOW IT WORKS */
+    #how { background:#0d1e38; padding:80px 40px; }
+    .steps-flow { display:flex; flex-wrap:wrap; gap:0; max-width:1000px; margin:0 auto; align-items:center; justify-content:center; }
+    .step-item {
+      flex:1; min-width:190px; max-width:220px;
+      background:var(--dark-card); border:1px solid rgba(201,153,63,0.12);
+      border-radius:16px; padding:28px 20px; text-align:center;
+      margin:8px; transition:all 0.3s;
+    }
+    .step-item:hover { border-color:rgba(37,211,102,0.4); transform:translateY(-4px); }
+    .step-num {
+      width:40px; height:40px; border-radius:50%;
+      background:linear-gradient(135deg,var(--wa-green),var(--wa-dark));
+      color:#fff; font-weight:700; font-size:1rem;
+      display:flex; align-items:center; justify-content:center;
+      margin:0 auto 14px;
+    }
+    .step-icon { font-size:2rem; margin-bottom:12px; display:block; }
+    .step-item h3 { font-family:'Playfair Display',serif; font-size:1rem; color:#fff; margin-bottom:8px; }
+    .step-item p { font-size:0.82rem; color:var(--text-light); line-height:1.6; }
+    .step-arrow { font-size:1.6rem; color:var(--gold); opacity:0.4; padding:0 2px; }
+
+    /* PRODUCTS */
+    #products { padding:80px 40px; }
+    .cat-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; max-width:880px; margin:0 auto 36px; }
+    .cat-card {
+      background:var(--dark-card); border:1px solid rgba(201,153,63,0.12);
+      border-radius:14px; padding:24px 14px; text-align:center; transition:all 0.3s;
+    }
+    .cat-card:hover { border-color:rgba(37,211,102,0.35); transform:translateY(-4px); }
+    .cat-icon { font-size:2.4rem; margin-bottom:10px; display:block; }
+    .cat-card h3 { font-size:0.9rem; font-weight:600; color:#fff; }
+    .cat-wa-cta {
+      text-align:center; padding:28px; background:var(--dark-card);
+      border:1px solid rgba(37,211,102,0.25); border-radius:18px; max-width:580px; margin:0 auto;
+    }
+    .cat-wa-cta p { color:var(--text-light); margin-bottom:18px; font-size:0.92rem; line-height:1.6; }
+    .cat-wa-cta a {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--wa-green); color:#fff;
+      padding:13px 28px; border-radius:50px;
+      font-weight:700; font-size:0.92rem; text-decoration:none; transition:all 0.2s;
+    }
+    .cat-wa-cta a:hover { background:var(--wa-dark); }
+
+    /* WHY */
+    #why { background:#0d1e38; padding:80px 40px; }
+    .why-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; max-width:1000px; margin:0 auto; }
+    .why-card { border:1px solid rgba(201,153,63,0.13); border-radius:14px; padding:28px 22px; background:linear-gradient(135deg,var(--dark-card),rgba(10,22,40,0.7)); transition:all 0.3s; }
+    .why-card:hover { border-color:var(--gold); transform:translateY(-3px); }
+    .why-icon { font-size:2rem; margin-bottom:14px; display:block; }
+    .why-card h3 { font-family:'Playfair Display',serif; font-size:1.05rem; color:#fff; margin-bottom:8px; }
+    .why-card p { font-size:0.84rem; color:var(--text-light); line-height:1.6; }
+
+    /* ABOUT */
+    #about { padding:80px 40px; }
+    .about-wrap { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+    .about-text p { color:var(--text-light); line-height:1.8; font-size:0.95rem; margin-bottom:16px; }
+    .priority-list { list-style:none; display:flex; flex-direction:column; gap:12px; }
+    .priority-list li { display:flex; align-items:center; gap:12px; background:var(--dark-card); border:1px solid rgba(201,153,63,0.12); padding:13px 18px; border-radius:10px; font-size:0.88rem; color:var(--cream); }
+    .priority-list li::before { content:"✦"; color:var(--gold); font-size:0.65rem; }
+    .about-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .acard { background:var(--dark-card); border:1px solid rgba(201,153,63,0.12); border-radius:14px; padding:22px; text-align:center; }
+    .acard .num { font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:var(--gold); }
+    .acard p { font-size:0.78rem; color:var(--text-light); margin-top:4px; }
+
+    /* CONTACT */
+    #contact { background:#0d1e38; padding:80px 40px; }
+    .contact-wrap { max-width:800px; margin:0 auto; }
+    .contact-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:16px; }
+    .ccard { background:var(--dark-card); border:1px solid rgba(201,153,63,0.13); border-radius:14px; padding:26px 22px; display:flex; align-items:flex-start; gap:16px; text-decoration:none; transition:all 0.25s; }
+    .ccard:hover { border-color:var(--gold); transform:translateY(-3px); }
+    .ccard-icon { font-size:1.8rem; }
+    .ccard-body h4 { font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:5px; }
+    .ccard-body p { color:#fff; font-size:0.95rem; font-weight:500; }
+    .ccard-body span { font-size:0.8rem; color:var(--text-light); }
+    .map-ccard { background:var(--dark-card); border:1px solid rgba(201,153,63,0.13); border-radius:14px; padding:26px 22px; display:flex; align-items:center; gap:18px; text-decoration:none; transition:all 0.25s; }
+    .map-ccard:hover { border-color:var(--gold); }
+    .map-btn { margin-left:auto; background:var(--gold); color:var(--navy); padding:10px 20px; border-radius:50px; font-weight:700; font-size:0.82rem; white-space:nowrap; flex-shrink:0; }
+
+    /* FLOATING WA */
+    .float-wa { position:fixed; bottom:28px; right:28px; z-index:999; background:var(--wa-green); color:#fff; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.8rem; text-decoration:none; box-shadow:0 6px 24px rgba(37,211,102,0.5); animation:pulse 2.5s infinite; }
+    .float-wa-label { position:fixed; bottom:38px; right:96px; z-index:999; background:var(--navy); border:1px solid rgba(37,211,102,0.3); color:#fff; padding:8px 14px; border-radius:10px; font-size:0.8rem; font-weight:600; white-space:nowrap; pointer-events:none; }
+    .float-wa-label::after { content:''; position:absolute; right:-6px; top:50%; transform:translateY(-50%); border:6px solid transparent; border-left-color:var(--navy); }
+    @keyframes pulse { 0%,100%{box-shadow:0 6px 24px rgba(37,211,102,0.5);}50%{box-shadow:0 6px 36px rgba(37,211,102,0.8);} }
+
+    /* FOOTER */
+    footer { text-align:center; padding:36px; border-top:1px solid rgba(201,153,63,0.1); }
+    .footer-brand { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold); margin-bottom:6px; }
+    footer p { color:var(--text-light); font-size:0.84rem; margin-top:6px; }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);} }
+
+    @media(max-width:768px) {
+      .about-wrap { grid-template-columns:1fr; }
+      .step-arrow { display:none; }
+    }
+    @media(max-width:640px) {
+      nav { padding:14px 18px; }
+      .nav-links { display:none; }
+      .nav-links.open { display:flex; flex-direction:column; position:absolute; top:58px; left:0; right:0; background:var(--navy); padding:18px; border-bottom:1px solid rgba(201,153,63,0.12); z-index:300; }
+      .hamburger { display:flex; }
+      #home,#how,#products,#why,#about,#contact { padding:70px 18px; }
+      .float-wa-label { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- FLOATING WA -->
+<div class="float-wa-label">Product dekhne ke liye click karo!</div>
+<a class="float-wa" href="https://wa.me/919462526669?text=Hello!%20Khushboo%20Collection%20ka%20latest%20collection%20dikhao%20please%20%F0%9F%99%8F" target="_blank">💬</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Khushboo <span>Collection</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-wa" href="https://wa.me/919462526669?text=Hello!%20Khushboo%20Collection%20ka%20latest%20collection%20dikhao%20please%20%F0%9F%99%8F" target="_blank">
+    💬 WhatsApp Karo
+  </a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Abu Road ka Trusted Mens Wear</div>
+    <h1 class="hero-title">Welcome to<br><span class="gold">Khushboo</span><br>Collection 👔</h1>
+    <p class="hero-sub">Stylish Mens Wear at Affordable Price — Latest shirts, jeans, formal wear aur ethnic collection Abu Road me.</p>
+    <div class="wa-cta-box">
+      <h3>💬 Collection Dekhni Hai?</h3>
+      <p>Humara koi online product listing nahi hai — lekin aapko personally best service milegi! <strong>Sirf WhatsApp karo</strong>, hum aapko turant latest products ki photos bhejenge aur aapki pasand ke hisaab se best suggestion denge.</p>
+      <a class="wa-big-btn" href="https://wa.me/919462526669?text=Hello!%20Khushboo%20Collection%20ka%20latest%20collection%20dikhao%20please%20%F0%9F%99%8F" target="_blank">
+        <span class="wa-icon">💬</span>
+        WhatsApp par Collection Dekho
+      </a>
+      <div class="wa-steps">
+        <div class="wa-step"><div class="num">1</div> WhatsApp karo</div>
+        <div class="wa-step"><div class="num">2</div> Photo dekho</div>
+        <div class="wa-step"><div class="num">3</div> Order confirm karo</div>
+        <div class="wa-step"><div class="num">4</div> Store se lo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <p class="section-label">Simple Process</p>
+  <h2 class="section-title">Kaise Kaam Karta Hai?</h2>
+  <div class="gold-line"></div>
+  <p class="section-sub">Bilkul simple — bas WhatsApp karo aur apni pasand ki dress ghar baithe dekho!</p>
+  <div class="steps-flow">
+    <div class="step-item">
+      <span class="step-icon">💬</span>
+      <div class="step-num">1</div>
+      <h3>WhatsApp Karo</h3>
+      <p>Button dabaate hi WhatsApp khulega — koi form nahi, koi registration nahi.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step-item">
+      <span class="step-icon">🗣️</span>
+      <div class="step-num">2</div>
+      <h3>Requirement Batao</h3>
+      <p>Kya chahiye — shirt, jeans, ethnic wear? Size, color, budget — sab batao.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step-item">
+      <span class="step-icon">📸</span>
+      <div class="step-num">3</div>
+      <h3>Photos Aayengi</h3>
+      <p>Hum turant aapki pasand ke hisaab se latest collection ki photos bhejenge.</p>
+    </div>
+    <div class="step-arrow">→</div>
+    <div class="step-item">
+      <span class="step-icon">✅</span>
+      <div class="step-num">4</div>
+      <h3>Order Confirm Karo</h3>
+      <p>Jo pasand aaye confirm karo — store pe aakar le jao!</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <p class="section-label">Humara Collection</p>
+  <h2 class="section-title">Kya Kya Milta Hai?</h2>
+  <div class="gold-line"></div>
+  <p class="section-sub">Inme se jo bhi chahiye — WhatsApp karo, hum photos bhejenge!</p>
+  <div class="cat-grid">
+    <div class="cat-card"><span class="cat-icon">👕</span><h3>Casual Shirts</h3></div>
+    <div class="cat-card"><span class="cat-icon">👖</span><h3>Jeans & Trousers</h3></div>
+    <div class="cat-card"><span class="cat-icon">👔</span><h3>Formal Wear</h3></div>
+    <div class="cat-card"><span class="cat-icon">🧥</span><h3>Jackets & Winter</h3></div>
+    <div class="cat-card"><span class="cat-icon">👘</span><h3>Ethnic Wear</h3></div>
+    <div class="cat-card"><span class="cat-icon">🆕</span><h3>New Arrivals</h3></div>
+  </div>
+  <div class="cat-wa-cta">
+    <p>👆 Inme se kisi bhi category ki <strong>latest photos, price aur new arrivals</strong> dekhni ho — bas WhatsApp karo. Hum personally best options suggest karenge!</p>
+    <a href="https://wa.me/919462526669?text=Hello!%20Mujhe%20collection%20ki%20photos%20chahiye%20please%20%F0%9F%99%8F" target="_blank">
+      💬 Photos ke liye WhatsApp Karo
+    </a>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <p class="section-label">Kyun Chunein</p>
+  <h2 class="section-title">Kyun Khushboo Collection?</h2>
+  <div class="gold-line"></div>
+  <p class="section-sub">Abu Road me best mens wear experience ke liye trusted naam.</p>
+  <div class="why-grid">
+    <div class="why-card"><span class="why-icon">👗</span><h3>Latest Fashion</h3><p>Hum regularly naye designs laate hain — aap hamesha updated rahoge.</p></div>
+    <div class="why-card"><span class="why-icon">💰</span><h3>Affordable Price</h3><p>Best quality, best price — har budget ke liye, guaranteed.</p></div>
+    <div class="why-card"><span class="why-icon">📲</span><h3>WhatsApp Service</h3><p>Ghar baithe photos dekho — seedha WhatsApp par personal service milegi.</p></div>
+    <div class="why-card"><span class="why-icon">😊</span><h3>Personal Attention</h3><p>Aapki requirement sun ke sahi suggestion — har customer ke liye personal care.</p></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label" style="text-align:center;">Hamare Baare Me</p>
+  <h2 class="section-title">About <span style="color:var(--gold)">Khushboo Collection</span></h2>
+  <div class="gold-line"></div>
+  <div class="about-wrap" style="margin-top:40px;">
+    <div class="about-text">
+      <p>Khushboo Collection ek popular retail mens wear shop hai Abu Road, Rajasthan me. Hum latest fashion trends aur high-quality clothing provide karte hain jo har age group ke liye perfect hai.</p>
+      <p>Ab aapko store aaye bina bhi WhatsApp ke zariye ghar baithe collection dekh sakte ho aur order kar sakte ho!</p>
+      <ul class="priority-list">
+        <li>Customer Satisfaction — Aapki khushi pehli priority</li>
+        <li>Best Quality Products — Carefully selected har item</li>
+        <li>Reasonable Pricing — Pocket-friendly, no compromise</li>
+      </ul>
+    </div>
+    <div class="about-cards">
+      <div class="acard"><div class="num">5+</div><p>Categories</p></div>
+      <div class="acard"><div class="num">100%</div><p>Quality Guarantee</p></div>
+      <div class="acard"><div class="num">All</div><p>Age Groups</p></div>
+      <div class="acard"><div class="num">Best</div><p>Price Promise</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <p class="section-label">Humse Miliye</p>
+    <h2 class="section-title">Contact Karo</h2>
+    <div class="gold-line"></div>
+    <p class="section-sub">Call karo, WhatsApp karo ya seedha store pe aaiye!</p>
+    <div class="contact-cards">
+      <a class="ccard" href="https://wa.me/919462526669?text=Hello!%20Khushboo%20Collection%20ka%20latest%20collection%20dikhao%20please%20%F0%9F%99%8F" target="_blank">
+        <div class="ccard-icon">💬</div>
+        <div class="ccard-body"><h4>WhatsApp</h4><p>+91 94625 26669</p><span>Collection dekho &amp; order karo</span></div>
+      </a>
+      <a class="ccard" href="tel:+919462526669">
+        <div class="ccard-icon">📞</div>
+        <div class="ccard-body"><h4>Call Karo</h4><p>+91 94625 26669</p><span>Tap karke seedha call karo</span></div>
+      </a>
+    </div>
+    <a class="map-ccard" href="https://maps.app.goo.gl/SqKLraz4BwTDmb789" target="_blank">
+      <div class="ccard-icon">📍</div>
+      <div class="ccard-body"><h4>Hamare Store Par Aaiye</h4><p>Abu Road, Rajasthan, India</p><span>Google Maps pe directions lein</span></div>
+      <div class="map-btn">Directions 🗺️</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Khushboo Collection</div>
+  <p style="color:var(--gold); font-size:0.82rem;">Stylish Mens Wear at Affordable Price</p>
+  <p>📍 Abu Road, Rajasthan &nbsp;|&nbsp; 📞 +91 94625 26669</p>
+  <p style="margin-top:14px; font-size:0.75rem; color:#3a5070;">© 2025 Khushboo Collection. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.step-item,.cat-card,.why-card,.ccard,.acard,.priority-list li').forEach(el => {
+    el.style.opacity='0'; el.style.transform='translateY(20px)';
+    el.style.transition='opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  setTimeout(() => {
+    const lbl = document.querySelector('.float-wa-label');
+    if (lbl) lbl.style.display='none';
+  }, 5000);
+</script>
+</body>
+</html>
